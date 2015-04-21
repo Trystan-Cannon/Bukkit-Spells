@@ -1,0 +1,29 @@
+name: DiagonCraftSpells
+version: 1.0
+main: io.github.trystancannon.diagoncraftspells.core.DiagonCraftSpellsPlugin
+
+commands:
+    spells:
+        description: Base command, giving access to all sub-comands.
+        usage: /<command> [sub command] [args...]
+        permission: diagoncraftspells.spells
+        
+permissions:
+    diagoncraftspells.spells:
+        description: Allows access to the base /spells command.
+        default: true
+    diagoncraftspells.list:
+        description: Allows the use of /spell list, listing all spell names.
+        default: true
+    diagoncraftspells.book:
+        description: Allows the use of /spells book [spell name].
+        default: op
+    diagoncraftspells.wand:
+        description: Allows the use of /spells wand and /spells wands.
+        default: op
+    diagoncraftspells.reload:
+        description: Reloads all wizard profiles.
+        default: op
+    diagoncraftspells.fixly:
+        description: Resets the player's fly speed. This fixes issues with the plugin reloading while the player's fly speed is adjusted.
+        default: true
