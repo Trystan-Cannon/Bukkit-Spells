@@ -2,7 +2,7 @@
 A bukkit plugin which introduces spells into the game. Players can learn and wield spells for PVP, survival, or entertainment purposes!
 
 # Installation
-For now, all you have to do is download the plugin and drop it into your plugins folder.
+For now, all you have to do is download the plugin from the "target" folder and drop it into your plugins folder.
 
 All profiles are stored within the plugin's data folder. Each profile is a text file whose name is the unique id of the player to whom it belongs. The contents of the profile is simply the list of all of the spell names that the player knows. Therefore, their profile can be edited outside of the game.
 
