@@ -13,6 +13,7 @@ All profiles are stored within the plugin's data folder. Each profile is a text 
 
 # Commands
 - /spells -- The base command for the plugin. Simply using this gives you the usage of all commands available.
+- /spells reload -- Reloads all of the wizard profiles and reports the time it took to do so.
 - /spells book [spell name] -- Gives the player the learnable spell book for the spell with the given name. Nothing is given if the spell provided does not exist.
 - /spells wands -- Gives the player all available wands.
 - /spells list -- Lists all of the registered spells in the version of the plugin being used.
