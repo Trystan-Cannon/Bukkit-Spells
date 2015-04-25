@@ -37,6 +37,9 @@ import io.github.trystancannon.diagoncraftspells.spell.SpellManager;
 import io.github.trystancannon.diagoncraftspells.wand.Wand;
 import io.github.trystancannon.diagoncraftspells.wand.Wand.WandType;
 
+import pgDev.bukkit.DisguiseCraft.api.DisguiseCraftAPI;
+import pgDev.bukkit.DisguiseCraft.DisguiseCraft;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -54,6 +57,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /*
 TODO:
+    - Spells remaining:
+        + Sectumsempra
+        + Serpensortia
+        + Silencio
+        + Stupefy
+        + Vipera Evanesca
+        + 15 other spells mentioned in a PM
+
     - Add all of the spells.
     - Add SpellProjectileCollide event to protect from spells.
     - Rewrite all deprecated spells to use the new spell system.
@@ -138,6 +149,12 @@ public class DiagonCraftSpellsPlugin extends JavaPlugin implements Listener {
     private static final SpellBookActivateListener spellBookActivateListener = new SpellBookActivateListener();
     
     /**
+     * The object through which disguises are controlled. This is used for disguise
+     * related spells.
+     */
+    private static DisguiseCraftAPI disguiseApi;
+    
+    /**
      * Loads all of the wizard profiles from the plugin's data folder, storing
      * them into the <code>wizards</code> <code>HashMap</code>.
      * 
@@ -152,6 +169,10 @@ public class DiagonCraftSpellsPlugin extends JavaPlugin implements Listener {
         if (!getDataFolder().exists()) {
             getDataFolder().mkdirs();
         }
+        
+        // Load apis.
+        disguiseApi = DisguiseCraft.getAPI();
+        getLogger().log(Level.INFO, "DisguiseCraft was{0}fround.", (disguiseApi != null ? " " : " not "));
         
         // Load wizard profiles.
         loadWizardProfiles();
@@ -199,6 +220,14 @@ public class DiagonCraftSpellsPlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onSpellLearned(SpellLearnedEvent learn) {
         Saver.saveWizardProfile(getDataFolder().getAbsolutePath(), learn.getWizard());
+    }
+    
+    /**
+     * @return
+     *          The object through which disguises are controlled.
+     */
+    public static DisguiseCraftAPI getDisguiseAPI() {
+        return disguiseApi;
     }
     
     /**

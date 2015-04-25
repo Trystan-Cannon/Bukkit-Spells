@@ -140,7 +140,7 @@ public class SpellProjectile implements Runnable {
             
             Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, this, 1L);
         } else {
-            if (arrow.isOnGround()) {
+            if (!isRemoved() && arrow.isOnGround()) {
                 Location arrowStrikeLocation = arrow.getLocation();
                 Vector direction = launchVelocity.normalize();
                 double reach = 0.01;

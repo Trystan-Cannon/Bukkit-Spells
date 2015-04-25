@@ -29,6 +29,9 @@ import io.github.trystancannon.diagoncraftspells.spell.Levicorpus;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
@@ -39,7 +42,7 @@ import org.bukkit.util.Vector;
  * 
  * @author Trystan Cannon
  */
-public final class LevicorpusEffect extends SpellEffect {
+public final class LevicorpusEffect extends SpellEffect implements Listener {
 
     /**
      * The number of server ticks for which the effect lasts.
@@ -93,6 +96,21 @@ public final class LevicorpusEffect extends SpellEffect {
         getEntity().setVelocity(new Vector(0, 5, 0));
         // Stick them there.
         Bukkit.getScheduler().scheduleSyncDelayedTask(getPlugin(), this, RUN_DELAY);
+        getPlugin().getServer().getPluginManager().registerEvents(this, getPlugin());
+    }
+    
+    /**
+     * Prevents players from getting out of flight while they are affected by
+     * Levicorpus.
+     * 
+     * @param event 
+     */
+    @EventHandler
+    public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
+        if (hasStarted() && !isRemoved() && event.getPlayer().getUniqueId().equals(getCaster().getPlayer().getUniqueId())) {
+            event.setCancelled(true);
+            event.getPlayer().teleport(getCaster().getPlayer().getLocation());
+        }
     }
     
     /**

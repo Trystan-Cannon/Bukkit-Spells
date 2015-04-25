@@ -97,6 +97,15 @@ public final class SpellManager {
         registerSpell(new Imperio(plugin));
         registerSpell(new Obliviate(plugin));
         registerSpell(new Obscuro(plugin));
+        registerSpell(new Entomorphis(plugin));
+        registerSpell(new Homorphus(plugin));
+        registerSpell(new Melofors(plugin));
+        registerSpell(new Avifors(plugin));
+        registerSpell(new Lapifors(plugin));
+        registerSpell(new Rennervate(plugin));
+        registerSpell(new Reparo(plugin));
+        registerSpell(new Accio(plugin));
+        registerSpell(new Serpensortia(plugin));
     }
     
     /**

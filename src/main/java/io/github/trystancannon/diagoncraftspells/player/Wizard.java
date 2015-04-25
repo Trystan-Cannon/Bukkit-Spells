@@ -108,7 +108,7 @@ public final class Wizard {
      * @param effect
      *              Effect to add.
      */
-    public void addEffect(SpellEffect effect) {
+    public synchronized void addEffect(SpellEffect effect) {
         effects.add(effect);
     }
     
@@ -119,7 +119,7 @@ public final class Wizard {
      *          <code>true</code> if this wizard is currently being affected by
      *          the effect with the given name.
      */
-    public boolean hasEffect(String effectName) {
+    public synchronized boolean hasEffect(String effectName) {
         for (SpellEffect effect : effects) {
             if (effect.getName().equals(effectName)) {
                 return true;
@@ -140,7 +140,7 @@ public final class Wizard {
      *          type which are currently affecting this wizard.
      *          <code>null</code> if there were no effects found.
      */
-    public List<SpellEffect> getEffect(String effectName) {
+    public synchronized List<SpellEffect> getEffect(String effectName) {
         if (!hasEffect(effectName)) {
             return null;
         }
@@ -165,7 +165,7 @@ public final class Wizard {
      * 
      * @param effect 
      */
-    public void removeEffectFromList(SpellEffect effect) {
+    public synchronized void removeEffectFromList(SpellEffect effect) {
         if (effects.contains(effect)) {
             effects.remove(effect);
         }
@@ -175,7 +175,7 @@ public final class Wizard {
      * @return
      *          The list of all effects currently affecting this <code>Wizard</code>.
      */
-    public List<SpellEffect> getEffects() {
+    public synchronized List<SpellEffect> getEffects() {
         return effects;
     }
     

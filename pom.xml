@@ -39,5 +39,10 @@
            <type>jar</type>
            <scope>provided</scope>
        </dependency>
+      <dependency>
+         <groupId>DisguiseCraft</groupId>
+         <artifactId>disguise_craft</artifactId>
+         <version>5.1</version>
+      </dependency>
    </dependencies>
 </project>

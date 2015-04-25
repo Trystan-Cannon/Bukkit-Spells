@@ -2,6 +2,8 @@ name: DiagonCraftSpells
 version: 1.0
 main: io.github.trystancannon.diagoncraftspells.core.DiagonCraftSpellsPlugin
 
+depend: [DisguiseCraft]
+
 commands:
     spells:
         description: Base command, giving access to all sub-comands.

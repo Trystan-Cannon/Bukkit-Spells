@@ -44,6 +44,12 @@ import org.bukkit.plugin.Plugin;
  * All effects must be explicitly started before an event or scheduled task
  * is created.
  * 
+ * NOTE:
+ * Effects remove themselves from the affected wizard's effect list. This can cause
+ * <code>ConcurrentModificationException</code>s when users try to iterate through
+ * the effect list and remove effects during an iteration. This is a design flaw
+ * and should be fixed later...
+ * 
  * @author Trystan Cannon
  */
 public abstract class SpellEffect implements Runnable {
@@ -72,6 +78,11 @@ public abstract class SpellEffect implements Runnable {
      * Whether or not the effect has been removed.
      */
     private boolean isRemoved = false;
+    
+    /**
+     * Whether or not the effect has been started.
+     */
+    private boolean hasStarted = false;
     
     public SpellEffect(String name, Plugin plugin, LivingEntity entityAffected, Wizard caster) {
         this.name = name;
@@ -122,6 +133,14 @@ public abstract class SpellEffect implements Runnable {
     }
     
     /**
+     * @return
+     *          Whether or not this effect has been started.
+     */
+    public boolean hasStarted() {
+        return hasStarted;
+    }
+    
+    /**
      * Carries out the effect.
      */
     @Override
@@ -143,6 +162,7 @@ public abstract class SpellEffect implements Runnable {
             }
         }
         
+        hasStarted = true;
         produceAddEvent();
     }
     
