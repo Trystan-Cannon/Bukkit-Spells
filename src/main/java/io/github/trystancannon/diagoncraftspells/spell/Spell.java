@@ -27,12 +27,17 @@ import io.github.trystancannon.diagoncraftspells.player.Wizard;
 
 import java.util.List;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
@@ -174,6 +179,17 @@ public abstract class Spell {
         Arrow arrowFired = player.getWorld().spawnArrow(arrowLocation, direction, speed, 0F);
         
         return arrowFired;
+    }
+    
+    public static Firework launchFireworkFromCaster(Wizard caster, FireworkEffect effect, int power) {
+        Firework firework = (Firework) caster.getPlayer().getWorld().spawnEntity(caster.getPlayer().getEyeLocation(), EntityType.FIREWORK);
+        FireworkMeta fireworkMeta = firework.getFireworkMeta();
+        
+        fireworkMeta.addEffect(effect);
+        fireworkMeta.setPower(power);
+        
+        firework.setFireworkMeta(fireworkMeta);
+        return firework;
     }
     
     /**

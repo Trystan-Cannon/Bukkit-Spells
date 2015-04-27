@@ -2,7 +2,7 @@ name: DiagonCraftSpells
 version: 1.0
 main: io.github.trystancannon.diagoncraftspells.core.DiagonCraftSpellsPlugin
 
-depend: [DisguiseCraft]
+depend: [DisguiseCraft, ProtocolLib]
 
 commands:
     spells:

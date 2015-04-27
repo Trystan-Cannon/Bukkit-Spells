@@ -33,9 +33,6 @@ import org.bukkit.FireworkEffect.Type;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Firework;
-import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.Plugin;
 
 /**
@@ -57,13 +54,7 @@ public class Verdimillious extends Spell {
 
     @Override
     public boolean execute(Wizard caster, Block targetBlock, BlockFace targetFace, Entity target, String[] args) {
-        Firework firework = (Firework) caster.getPlayer().getWorld().spawnEntity(caster.getPlayer().getEyeLocation(), EntityType.FIREWORK);
-        FireworkMeta fireworkMeta = firework.getFireworkMeta();
-        
-        fireworkMeta.addEffect(FireworkEffect.builder().flicker(false).withColor(Color.GREEN).trail(true).with(Type.BURST).build());
-        fireworkMeta.setPower(FIREWORK_POWER);
-        
-        firework.setFireworkMeta(fireworkMeta);
+        Spell.launchFireworkFromCaster(caster, FireworkEffect.builder().flicker(false).withColor(Color.GREEN).trail(true).with(Type.BURST).build(), FIREWORK_POWER);
         alertCast(caster);
         
         return true;

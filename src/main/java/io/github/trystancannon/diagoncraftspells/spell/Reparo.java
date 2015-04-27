@@ -45,7 +45,7 @@ public class Reparo extends ProjectileSpell {
     public static final String NAME = "Reparo";
     
     public static final List<String> DESCRIPTION = Arrays.asList("Repairs the item at which the", "spell is casted.", "",
-                                                                 "NOTE: If there are multyple items", "near where the spell lands, only one,", "and perhaps not the correct one,",
+                                                                 "NOTE: If there are multiple items", "near where the spell lands, only one,", "and perhaps not the correct one,",
                                                                  "will be repaired.");
     
     public Reparo(Plugin plugin) {

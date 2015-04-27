@@ -106,6 +106,22 @@ public final class SpellManager {
         registerSpell(new Reparo(plugin));
         registerSpell(new Accio(plugin));
         registerSpell(new Serpensortia(plugin));
+        registerSpell(new ViperaEvanesca(plugin));
+        registerSpell(new Sectumsempra(plugin));
+        registerSpell(new Stupefy(plugin));
+        registerSpell(new Silencio(plugin));
+        registerSpell(new Alohomora(plugin));
+        registerSpell(new FourPointSpell(plugin));
+        registerSpell(new VeraVeto(plugin));
+        registerSpell(new VulneraSanentur(plugin));
+        registerSpell(new Reparifarge(plugin));
+        registerSpell(new GlaciusDuo(plugin));
+        registerSpell(new GlaciusTrio(plugin));
+        registerSpell(new Orchideous(plugin));
+        registerSpell(new Petriculum(plugin));
+        registerSpell(new Bedaz(plugin));
+        registerSpell(new Firestorm(plugin));
+        registerSpell(new Herbivicus(plugin));
     }
     
     /**

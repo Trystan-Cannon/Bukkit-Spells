@@ -93,7 +93,7 @@ public class Aquamenti extends Spell {
         AquamentiTask task = new AquamentiTask(targetBlock, targetFace);
         task.run();
         
-        caster.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE.toString() + ChatColor.ITALIC + NAME + "!");
+        alertCast(caster);
         return true;
     }
     

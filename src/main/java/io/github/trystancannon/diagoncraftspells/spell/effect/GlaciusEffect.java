@@ -62,11 +62,14 @@ public class GlaciusEffect extends LocationEffect {
          */
         @Override
         public void start() {
-            // Freeze the block and begin the scheduled checks.
-            getBlock().setType(Material.ICE);
-            Bukkit.getScheduler().scheduleSyncDelayedTask(getPlugin(), this, LIFE_SPAN);
-            
-            super.start();
+            // Ensure that the blocks are water, of course.
+            if (getBlock().getType() == Material.WATER || getBlock().getType() == Material.STATIONARY_WATER) {
+                // Freeze the block and begin the scheduled checks.
+                getBlock().setType(Material.ICE);
+                Bukkit.getScheduler().scheduleSyncDelayedTask(getPlugin(), this, LIFE_SPAN);
+
+                super.start();
+            }
         }
         
         /**

@@ -63,4 +63,13 @@ public abstract class LocationEffect extends SpellEffect {
         return blockLocation;
     }
     
+    /**
+     * Changes the block this effect is affecting.
+     * 
+     * @param block
+     *          The new block to affect.
+     */
+    protected void setBlock(Block block) {
+    }
+    
 }

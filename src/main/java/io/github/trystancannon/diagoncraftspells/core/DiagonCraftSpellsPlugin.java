@@ -57,17 +57,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /*
 TODO:
-    - Spells remaining:
-        + Sectumsempra
-        + Serpensortia
-        + Silencio
-        + Stupefy
-        + Vipera Evanesca
-        + 15 other spells mentioned in a PM
-
-    - Add all of the spells.
-    - Add SpellProjectileCollide event to protect from spells.
-    - Rewrite all deprecated spells to use the new spell system.
+    - Maybe adjust SpellEffect to handle removal tasks natively,
+      or create an abstraction layer beneath it for "Timed Effect"s or something.
+    - Perhaps make a default projectile spell abstract class which spawns its effect
+      upon impact with a living entity. This would require the desired effect to be
+      registered in a constructor for registerSpell.
+    - Make a removal task part of a SpellEffect.
     - Cleanup code.
 */
 
